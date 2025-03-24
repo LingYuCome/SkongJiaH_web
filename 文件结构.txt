@@ -1,0 +1,187 @@
+制作网页/
+├── cursorrules.txt      # 项目配置文件
+├── index.html      # 主页面
+│   ```html
+│   <!DOCTYPE html>
+│   <html lang="zh">
+│   <head>
+│       <meta charset="UTF-8">
+│       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+│       <title>智能科技 - 引领未来</title>
+│       <!-- Bootstrap 5 CSS -->
+│       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+│       <!-- Font Awesome -->
+│       <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+│       <!-- Animate.css -->
+│       <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+│       <link href="styles.css" rel="stylesheet">
+│       <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+│   </head>
+│   <body>
+│       <!-- 导航栏 -->
+│       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+│           <!-- ... 导航栏内容 ... -->
+│       </nav>
+│   
+│       <!-- Banner部分 -->
+│       <section id="home" class="banner d-flex align-items-center">
+│           <!-- ... Banner内容 ... -->
+│       </section>
+│   
+│       <!-- 产品介绍 -->
+│       <section id="products" class="section bg-light">
+│           <!-- ... 产品介绍内容 ... -->
+│       </section>
+│   
+│       <!-- 关于我们 -->
+│       <section id="about" class="section">
+│           <!-- ... 关于我们内容 ... -->
+│       </section>
+│   
+│       <!-- AI对话界面 -->
+│       <section id="ai-chat" class="section bg-light">
+│           <!-- ... AI对话界面内容 ... -->
+│       </section>
+│   
+│       <!-- 联系方式 -->
+│       <section id="contact" class="section">
+│           <!-- ... 联系方式内容 ... -->
+│       </section>
+│   
+│       <!-- 页脚 -->
+│       <footer class="bg-dark text-light py-4">
+│           <!-- ... 页脚内容 ... -->
+│       </footer>
+│   
+│       <!-- JavaScript 依赖 -->
+│       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+│       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+│       <script src="script.js"></script>
+│   </body>
+│   </html>
+│   ```
+│
+├── styles.css      # 样式文件
+│   ```css
+│   /* 全局样式 */
+│   :root {
+│       --primary-color: #1a237e;
+│       --secondary-color: #0d47a1;
+│       --text-color: #333;
+│       --light-bg: #f8f9fa;
+│   }
+│   
+│   body {
+│       font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+│       color: var(--text-color);
+│   }
+│   
+│   /* 导航栏样式 */
+│   .navbar {
+│       /* ... 导航栏样式 ... */
+│   }
+│   
+│   /* Banner样式 */
+│   .banner {
+│       /* ... Banner样式 ... */
+│   }
+│   
+│   /* 产品卡片样式 */
+│   .product-card {
+│       /* ... 产品卡片样式 ... */
+│   }
+│   
+│   /* AI对话界面样式 */
+│   .chat-container {
+│       /* ... AI对话界面样式 ... */
+│   }
+│   
+│   /* 联系表单样式 */
+│   .contact-form {
+│       /* ... 联系表单样式 ... */
+│   }
+│   
+│   /* 动画类 */
+│   .fade-in {
+│       /* ... 动画样式 ... */
+│   }
+│   ```
+│
+├── script.js       # JavaScript脚本
+│   ```javascript
+│   // 页面加载完成后执行
+│   document.addEventListener('DOMContentLoaded', function() {
+│       // 初始化滚动动画
+│       initScrollAnimation();
+│       // 初始化导航栏效果
+│       initNavbar();
+│       // 初始化AI对话
+│       initAIChat();
+│       // 初始化表单验证
+│       initContactForm();
+│       // 初始化particles.js
+│       if (document.getElementById('particles-js')) {
+│           particlesJS('particles-js', {
+│               // ... particles.js配置 ...
+│           });
+│       }
+│   });
+│   
+│   // 滚动动画
+│   function initScrollAnimation() {
+│       // ... 滚动动画代码 ...
+│   }
+│   
+│   // 导航栏效果
+│   function initNavbar() {
+│       // ... 导航栏效果代码 ...
+│   }
+│   
+│   // AI对话功能
+│   function initAIChat() {
+│       // ... AI对话功能代码 ...
+│   }
+│   
+│   // 表单验证和提交
+│   function initContactForm() {
+│       // ... 表单验证代码 ...
+│   }
+│   ```
+│
+└── README.md       # 项目说明文档
+    ```markdown
+    # 智能科技官网
+
+    这是一个现代化的企业官网项目，采用纯前端技术栈实现。
+
+    ## 特点
+
+    - 响应式设计，适配各种设备
+    - 现代化UI界面
+    - 实时AI对话功能
+    - 表单验证与提交
+    - 平滑滚动和动画效果
+
+    ## 技术栈
+
+    - HTML5
+    - CSS3
+    - JavaScript (ES6+)
+    - Bootstrap 5
+    - Font Awesome
+    - Animate.css
+    - jQuery
+
+    ## 使用说明
+
+    1. 克隆项目到本地
+    2. 直接在浏览器中打开 index.html 文件
+    3. 所有依赖都通过 CDN 加载，无需额外安装
+
+    ## 自定义配置
+
+    1. 替换占位图片为实际产品图片
+    2. 修改颜色主题（在 styles.css 中的 :root 变量）
+    3. 配置实际的API接口（在 script.js 中替换模拟API）
+    4. 添加实际的表单提交功能
+    ``` 
