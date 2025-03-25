@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
+    <!-- 基本的元数据设置 -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>深空嘉鸿 - 引领未来</title>
-    <!-- Bootstrap 5 CSS -->
+    <title>深空嘉鸿 - 全屋智能家居解决方案</title>
+    
+    <!-- 外部依赖库引入 -->
+    <!-- Bootstrap 5 用于响应式布局和UI组件 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
+    <!-- Font Awesome 用于图标显示 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <!-- Animate.css -->
+    <!-- Animate.css 用于页面动画效果 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!-- 自定义样式表 -->
     <link href="styles.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <!-- Particles.js 用于粒子动画效果 - 已删除 -->
+    <!-- <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script> -->
     <style>
         /* 添加一个简单的页面加载动画 */
         .preloader {
@@ -30,45 +35,36 @@
         .preloader.fade-out {
             opacity: 0;
         }
-        /* 添加到现有的style标签中 */
-        .typing-text {
-            white-space: pre-wrap;
-            margin: 0;
+        /* 视频后备图片容器样式 */
+        #banner-fallback {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
-        
-        .message-content {
-            position: relative;
-        }
-        
-        .message.ai-message .message-content {
-            background: rgba(26, 35, 126, 0.05);
-            padding: 15px;
-            border-radius: 15px;
-            border-top-left-radius: 5px;
-            margin-bottom: 10px;
-        }
-        
-        .message.user-message .message-content {
-            background: rgba(0, 128, 128, 0.05);
-            padding: 15px;
-            border-radius: 15px;
-            border-top-right-radius: 5px;
-            margin-bottom: 10px;
+        #banner-fallback img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
 <body>
     <!-- 添加预加载动画 -->
     <div class="preloader">
-        <div class="spinner-border text-light" role="status">
+        <div class="spinner-grow text-light" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
+        <h3 class="text-light ms-3">深空嘉鸿全屋智能</h3>
     </div>
     <!-- 导航栏 -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fas fa-robot"></i> 深空嘉鸿科技
+                <i class="fas fa-home"></i> 深空嘉鸿全屋智能
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -78,17 +74,228 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#home">首页</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#products">产品</a>
+                    <li class="nav-item dropdown mega-dropdown">
+                        <a class="nav-link dropdown-toggle" href="products.html" id="productDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            产品中心
+                        </a>
+                        <div class="mega-dropdown-menu">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <ul class="product-category-list">
+                                            <li data-category="smart-control" class="active"><span>智能控制</span></li>
+                                            <li data-category="smart-lighting"><span>智能照明</span></li>
+                                            <li data-category="smart-security"><span>智能安防</span></li>
+                                            <li data-category="smart-sensors"><span>智能传感器</span></li>
+                                            <li data-category="smart-switch"><span>智能开关</span></li>
+                                            <li data-category="smart-curtain"><span>智能窗帘</span></li>
+                                            <li data-category="smart-accessories"><span>智能配件</span></li>
+                                            <li><a href="products.html" style="text-decoration: none; color: inherit;"><span>查看全部产品</span></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="product-display-area">
+                                            <!-- 智能控制产品 -->
+                                            <div class="product-category-content" data-category="smart-control">
+                                                <h4 class="product-category-title">智能控制</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html#smart-control" class="img">
+                                                            <img src="./image/product-control-panel.jpg" alt="智能控制面板">
+                                                        </a>
+                                                        <a href="products.html#smart-control" class="proTitle">智能控制面板</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html#smart-control" class="img">
+                                                            <img src="./image/product-gateway.jpg" alt="智能家居主机">
+                                                        </a>
+                                                        <a href="products.html#smart-control" class="proTitle">智能家居主机</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.15s;">
+                                                        <a href="products.html#smart-control" class="img">
+                                                            <img src="./image/product-remote.jpg" alt="智能遥控器">
+                                                        </a>
+                                                        <a href="products.html#smart-control" class="proTitle">智能遥控器</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 智能照明产品 -->
+                                            <div class="product-category-content" data-category="smart-lighting" style="display: none;">
+                                                <h4 class="product-category-title">智能照明</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html#smart-lighting" class="img">
+                                                            <img src="./image/product-bulb.jpg" alt="智能灯泡">
+                                                        </a>
+                                                        <a href="products.html#smart-lighting" class="proTitle">智能灯泡</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html#smart-lighting" class="img">
+                                                            <img src="./image/product-ceiling.jpg" alt="智能吸顶灯">
+                                                        </a>
+                                                        <a href="products.html#smart-lighting" class="proTitle">智能吸顶灯</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.15s;">
+                                                        <a href="products.html#smart-lighting" class="img">
+                                                            <img src="./image/product-strip.jpg" alt="智能灯带">
+                                                        </a>
+                                                        <a href="products.html#smart-lighting" class="proTitle">智能灯带</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.2s;">
+                                                        <a href="products.html#smart-lighting" class="img">
+                                                            <img src="./image/product-switch.jpg" alt="智能开关">
+                                                        </a>
+                                                        <a href="products.html#smart-lighting" class="proTitle">智能开关</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 智能安防产品 -->
+                                            <div class="product-category-content" data-category="smart-security" style="display: none;">
+                                                <h4 class="product-category-title">智能安防</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html#smart-security" class="img">
+                                                            <img src="./image/product-lock.jpg" alt="智能门锁">
+                                                        </a>
+                                                        <a href="products.html#smart-security" class="proTitle">智能门锁</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html#smart-security" class="img">
+                                                            <img src="./image/product-camera.jpg" alt="智能摄像头">
+                                                        </a>
+                                                        <a href="products.html#smart-security" class="proTitle">智能摄像头</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.15s;">
+                                                        <a href="products.html#smart-security" class="img">
+                                                            <img src="./image/product-sensor.jpg" alt="门窗传感器">
+                                                        </a>
+                                                        <a href="products.html#smart-security" class="proTitle">门窗传感器</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 智能传感器产品 -->
+                                            <div class="product-category-content" data-category="smart-sensors" style="display: none;">
+                                                <h4 class="product-category-title">智能传感器</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html#smart-sensors" class="img">
+                                                            <img src="./image/product-temp.jpg" alt="温湿度传感器">
+                                                        </a>
+                                                        <a href="products.html#smart-sensors" class="proTitle">温湿度传感器</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html#smart-sensors" class="img">
+                                                            <img src="./image/product-smoke.jpg" alt="烟雾传感器">
+                                                        </a>
+                                                        <a href="products.html#smart-sensors" class="proTitle">烟雾传感器</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.15s;">
+                                                        <a href="products.html#smart-sensors" class="img">
+                                                            <img src="./image/product-water.jpg" alt="水浸传感器">
+                                                        </a>
+                                                        <a href="products.html#smart-sensors" class="proTitle">水浸传感器</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.2s;">
+                                                        <a href="products.html#smart-sensors" class="img">
+                                                            <img src="./image/product-motion.jpg" alt="人体传感器">
+                                                        </a>
+                                                        <a href="products.html#smart-sensors" class="proTitle">人体传感器</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 智能开关产品 -->
+                                            <div class="product-category-content" data-category="smart-switch" style="display: none;">
+                                                <h4 class="product-category-title">智能开关</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html#smart-switch" class="img">
+                                                            <img src="./image/product-switch-touch.jpg" alt="触控智能开关">
+                                                        </a>
+                                                        <a href="products.html#smart-switch" class="proTitle">触控智能开关</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html#smart-switch" class="img">
+                                                            <img src="./image/product-switch-voice.jpg" alt="语音智能开关">
+                                                        </a>
+                                                        <a href="products.html#smart-switch" class="proTitle">语音智能开关</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.15s;">
+                                                        <a href="products.html#smart-switch" class="img">
+                                                            <img src="./image/product-switch-scene.jpg" alt="场景控制开关">
+                                                        </a>
+                                                        <a href="products.html#smart-switch" class="proTitle">场景控制开关</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.2s;">
+                                                        <a href="products.html#smart-switch" class="img">
+                                                            <img src="./image/product-switch-dimmer.jpg" alt="调光控制开关">
+                                                        </a>
+                                                        <a href="products.html#smart-switch" class="proTitle">调光控制开关</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 智能窗帘产品 -->
+                                            <div class="product-category-content" data-category="smart-curtain" style="display: none;">
+                                                <h4 class="product-category-title">智能窗帘</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html" class="img">
+                                                            <img src="./image/product-curtain.jpg" alt="智能窗帘电机">
+                                                        </a>
+                                                        <a href="products.html" class="proTitle">智能窗帘电机</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html" class="img">
+                                                            <img src="./image/product-curtain-control.jpg" alt="窗帘控制器">
+                                                        </a>
+                                                        <a href="products.html" class="proTitle">窗帘控制器</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <!-- 智能配件产品 -->
+                                            <div class="product-category-content" data-category="smart-accessories" style="display: none;">
+                                                <h4 class="product-category-title">智能配件</h4>
+                                                <div class="product-item-grid">
+                                                    <div class="product-item" style="animation-delay: 0.05s;">
+                                                        <a href="products.html" class="img">
+                                                            <img src="./image/product-plug.jpg" alt="智能插座">
+                                                        </a>
+                                                        <a href="products.html" class="proTitle">智能插座</a>
+                                                    </div>
+                                                    <div class="product-item" style="animation-delay: 0.1s;">
+                                                        <a href="products.html" class="img">
+                                                            <img src="./image/product-remote-control.jpg" alt="智能遥控器">
+                                                        </a>
+                                                        <a href="products.html" class="proTitle">智能遥控器</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">关于我们</a>
+                        <a class="nav-link" href="#solutions">解决方案</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="#scenes">应用场景</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">联系方式</a>
+                        <a class="nav-link" href="#smart-scenes">智能场景</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#ai-chat">AI对话</a>
+                        <a class="nav-link" href="#advantages">产品优势</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">联系我们</a>
                     </li>
                 </ul>
             </div>
@@ -96,134 +303,856 @@
     </nav>
 
     <!-- Banner部分 -->
-    <section id="home" class="banner d-flex align-items-center">
+    <section id="home" class="banner d-flex align-items-center fullpage-section active-on-load">
+        <div class="banner-video-container">
+            <video id="banner-video" autoplay muted loop playsinline class="banner-video">
+                <source src="./video/banner-background.mp4" type="video/mp4">
+            </video>
+            <!-- 后备图片容器，初始隐藏 -->
+            <div id="banner-fallback" style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;">
+                <img src="./image/banner.jpg" alt="Banner背景" class="img-fluid" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+        </div>
         <div class="banner-overlay"></div>
-        <div class="banner-particles" id="particles-js"></div>
+        <div class="container text-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 animate__animated animate__fadeInLeft animate-in">
+                    <h1 class="display-4 fw-bold text-white mb-4">全屋智能家居解决方案</h1>
+                    <p class="lead text-white mb-5">让每个家庭都能享受智能科技带来的便利生活</p>
+                    <div class="mt-4">
+                        <a href="#solutions" class="btn btn-primary btn-lg me-3">
+                            了解解决方案 <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline-primary btn-lg">
+                            联系我们 <i class="fas fa-envelope ms-2"></i>
+                        </a>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+
+    <!-- 解决方案展示 -->
+    <section id="solutions" class="section bg-light fullpage-section orvibo-style-section">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 animate__animated animate__fadeInLeft">
-                    <h1 class="display-4 fw-bold text-light">深空嘉鸿，引领未来</h1>
-                    <p class="lead text-light">我们致力于为您提供最前沿的智能家居解决方案</p>
-                    <a href="#products" class="btn btn-outline-light btn-lg mt-3">
-                        了解更多 <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
+                <h6 class="text-primary fw-bold text-uppercase mb-2">智能家居</h6>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">全屋智能解决方案</h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="orvibo-section-subtitle animate-in">我们提供完整的智能家居生态系统，从智能控制到场景应用，打造真正的智慧生活</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card product-card h-100 animate-on-scroll animate-in">
+                        <div class="card-image-wrapper">
+                            <div class="icon-overlay">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <img src="./image/scene-control.jpg" class="card-img-top" alt="场景控制">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">
+                                <i class="fas fa-home text-primary me-2"></i>场景控制系统
+                            </h5>
+                            <p class="card-text flex-grow-1">一键控制全屋设备，打造个性化场景模式。支持语音控制、远程操作，让生活更智能便捷。</p>
+                            <div class="card-features mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>一键控制</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>语音操作</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>远程管理</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-hover-effect">
+                                了解详情 <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-lg-6 animate__animated animate__fadeInRight d-none d-lg-block">
-                    <img src="./image/banner.jpg" class="img-fluid rounded-3 banner-image" alt="AI Technology">
+                <div class="col-md-4">
+                    <div class="card product-card h-100 animate-on-scroll animate-in">
+                        <div class="card-image-wrapper">
+                            <div class="icon-overlay">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <img src="./image/scene-living.jpg" class="card-img-top" alt="智能安防">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">
+                                <i class="fas fa-shield-alt text-primary me-2"></i>智能安防系统
+                            </h5>
+                            <p class="card-text flex-grow-1">24小时智能监控，异常情况实时预警。支持人脸识别、移动侦测，让您的家更安全。</p>
+                            <div class="card-features mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>实时监控</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>智能预警</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>人脸识别</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-hover-effect">
+                                了解详情 <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card h-100 animate-on-scroll animate-in">
+                        <div class="card-image-wrapper">
+                            <div class="icon-overlay">
+                                <i class="fas fa-thermometer-half"></i>
+                            </div>
+                            <img src="./image/e-control.jpg" class="card-img-top" alt="环境控制">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">
+                                <i class="fas fa-thermometer-half text-primary me-2"></i>环境控制系统
+                            </h5>
+                            <p class="card-text flex-grow-1">智能调节室内温度、湿度、空气质量，创造舒适健康的居住环境，节能环保。</p>
+                            <div class="card-features mb-3">
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>温湿度控制</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>空气净化</span>
+                                </div>
+                                <div class="feature-item">
+                                    <i class="fas fa-check-circle text-success"></i>
+                                    <span>智能节能</span>
+                                </div>
+                            </div>
+                            <a href="#" class="btn btn-primary btn-hover-effect">
+                                了解详情 <i class="fas fa-arrow-right ms-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>               
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section id="scenes" class="section fullpage-section orvibo-style-section">
+        <div class="container">
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
+                <h6 class="text-primary fw-bold text-uppercase mb-2">场景展示</h6>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">智能生活场景</h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="orvibo-section-subtitle animate-in">智能系统无缝衔接，为不同空间打造专属智能场景，让生活更加舒适便捷</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <img src="./image/scene-living_qjs.jpg" alt="起居室场景" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>起居室</h4>
+                            <p>智能灯光、温控系统、影音娱乐，打造舒适休闲空间</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <img src="./image/scene-bedroom.jpg" alt="卧室场景" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>卧室</h4>
+                            <p>智能窗帘、睡眠监测、环境调节，享受优质睡眠</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <img src="./image/scene-kitchen.jpg" alt="厨房场景" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>厨房</h4>
+                            <p>智能烟机、燃气监测、语音控制，烹饪更安全便捷</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 产品介绍 -->
-    <section id="products" class="section bg-light">
+    <!-- 智能控制中心展示 -->
+    <section id="control-center" class="section fullpage-section orvibo-style-section">
+        <div class="container">
+            <!-- 展示框标题 -->
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
+                <h6 class="text-primary fw-bold text-uppercase mb-2">核心产品</h6>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">智能家居控制中心</h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="orvibo-section-subtitle animate-in">中央智能控制系统，让您的家居生活更智能、更便捷</p>
+            </div>
+            
+            <!-- 展示内容 -->
+            <div class="row align-items-center g-5">
+                <!-- 左侧图片展示 -->
+                <div class="col-lg-6 animate-in">
+                    <div class="position-relative banner-showcase">
+                        <!-- 主图片 -->
+                        <div class="rounded-4 shadow-lg overflow-hidden mb-4 banner-image-container">
+                            <img src="./image/control_scene2.jpg" alt="智能控制中心" class="img-fluid banner-main-image">
+                            
+                            <!-- 图片悬停时显示的放大按钮 -->
+                            <div class="banner-image-overlay">
+                                <a href="banner-showcase.html" class="btn btn-light btn-lg rounded-circle shadow">
+                                    <i class="fas fa-search-plus"></i>
+                                </a>
+                                <p class="mt-3 text-white">点击查看详情</p>
+                            </div>
+                        </div>
+                        
+                        <!-- 悬浮标记 - 带有说明文字的泡泡 -->
+                        <div class="position-absolute top-0 start-0 banner-feature-bubble m-3" data-feature="无线连接">
+                            <div class="bg-primary text-white p-3 rounded-circle shadow-lg">
+                                <i class="fas fa-wifi fa-lg"></i>
+                            </div>
+                            <div class="feature-tooltip">高速稳定的无线连接</div>
+                        </div>
+                        
+                        <div class="position-absolute top-0 end-0 banner-feature-bubble m-3" data-feature="安全防护">
+                            <div class="bg-primary text-white p-3 rounded-circle shadow-lg">
+                                <i class="fas fa-shield-alt fa-lg"></i>
+                            </div>
+                            <div class="feature-tooltip">全方位安全防护系统</div>
+                        </div>
+                        
+                        <div class="position-absolute bottom-0 start-0 banner-feature-bubble m-3" data-feature="智能场景">
+                            <div class="bg-primary text-white p-3 rounded-circle shadow-lg">
+                                <i class="fas fa-home fa-lg"></i>
+                            </div>
+                            <div class="feature-tooltip">个性化智能场景定制</div>
+                        </div>
+                        
+                        <div class="position-absolute bottom-0 end-0 banner-feature-bubble m-3" data-feature="智能设置">
+                            <div class="bg-primary text-white p-3 rounded-circle shadow-lg">
+                                <i class="fas fa-cog fa-lg"></i>
+                            </div>
+                            <div class="feature-tooltip">简单直观的智能设置</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 右侧内容说明 -->
+                <div class="col-lg-6 animate-in">
+                    <h3 class="fw-bold mb-4">全屋智能控制系统</h3>
+                    <p class="lead mb-4">我们的智能家居控制中心采用先进的AI技术，能够管理您家中所有的智能设备，包括灯光、窗帘、空调、安防等，实现真正的智能家居体验。</p>
+                    
+                    <!-- 功能特点列表 -->
+                    <div class="row g-4 mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-3 me-3">
+                                    <i class="fas fa-brain text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">AI智能</h5>
+                                    <p class="mb-0">学习您的生活习惯，智能调节家居环境</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-3 me-3">
+                                    <i class="fas fa-mobile-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">远程控制</h5>
+                                    <p class="mb-0">随时随地通过手机APP控制家中设备</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-3 me-3">
+                                    <i class="fas fa-microphone text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">语音控制</h5>
+                                    <p class="mb-0">支持语音指令，解放双手</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <div class="flex-shrink-0 bg-primary bg-opacity-10 p-3 rounded-3 me-3">
+                                    <i class="fas fa-bolt text-primary"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">节能环保</h5>
+                                    <p class="mb-0">智能调节用电，降低能源消耗</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 操作按钮 -->
+                    <div class="mt-4">
+                        <a href="#contact" class="btn btn-primary me-3">
+                            详细咨询 <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                        <a href="banner-showcase.html" class="btn btn-outline-primary">
+                            查看详细展示 <i class="fas fa-external-link-alt ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 智能家居场景展示模块 -->
+    <section id="smart-scenes" class="section fullpage-section orvibo-style-section">
+        <div class="container">
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
+                <h6 class="text-primary fw-bold text-uppercase mb-2">智能场景</h6>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">定制化智能家居场景</h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="lead text-muted orvibo-section-subtitle animate-in">根据您的生活习惯，打造专属于您的智能家居体验</p>
+            </div>
+            
+            <!-- 场景展示卡片 -->
+            <div class="row g-4">
+                <!-- 场景卡片1：回家模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-backhome.jpg" alt="回家模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>回家模式</h4>
+                            <p>感应开门、灯光自动开启、空调预设温度、窗帘自动开启</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-lightbulb"></i> 灯光</span>
+                                <span class="device-tag"><i class="fas fa-wind"></i> 空调</span>
+                                <span class="device-tag"><i class="fas fa-door-open"></i> 门锁</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片2：睡眠模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-moon"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-sleep.jpg" alt="睡眠模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>睡眠模式</h4>
+                            <p>灯光自动调暗、窗帘关闭、空调调至睡眠温度、智能监测睡眠质量</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-lightbulb"></i> 灯光</span>
+                                <span class="device-tag"><i class="fas fa-wind"></i> 空调</span>
+                                <span class="device-tag"><i class="fas fa-bed"></i> 睡眠</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片3：影院模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-film"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-movie.jpg" alt="影院模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>影院模式</h4>
+                            <p>灯光自动调暗、窗帘关闭、音响系统开启、电视自动调至最佳亮度</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-lightbulb"></i> 灯光</span>
+                                <span class="device-tag"><i class="fas fa-tv"></i> 电视</span>
+                                <span class="device-tag"><i class="fas fa-volume-up"></i> 音响</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片4：离家模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-leave.jpg" alt="离家模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>离家模式</h4>
+                            <p>自动关闭所有灯光、锁门、开启安防系统、断电非必要设备</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-lightbulb"></i> 灯光</span>
+                                <span class="device-tag"><i class="fas fa-shield-alt"></i> 安防</span>
+                                <span class="device-tag"><i class="fas fa-plug"></i> 电源</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片5：办公模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-office.jpg" alt="办公模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>办公模式</h4>
+                            <p>智能照明调节、空气净化、视频会议设备自动开启、智能助手待命</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-lightbulb"></i> 照明</span>
+                                <span class="device-tag"><i class="fas fa-video"></i> 会议</span>
+                                <span class="device-tag"><i class="fas fa-robot"></i> 助手</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片6：烹饪模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-utensils"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-cooking.jpg" alt="烹饪模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>烹饪模式</h4>
+                            <p>开启厨房照明，自动开启排风扇，打开智能水龙头，显示菜谱信息，开启定时提醒</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-lightbulb"></i> 照明</span>
+                                <span class="device-tag"><i class="fas fa-wind"></i> 排风扇</span>
+                                <span class="device-tag"><i class="fas fa-faucet"></i> 水龙头</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片7：安全预警模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-security.jpg" alt="安全预警模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>安全预警模式</h4>
+                            <p>烟雾报警联动，自动切断燃气，打开所有照明，自动开启排风，推送紧急通知</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-smog"></i> 烟雾报警</span>
+                                <span class="device-tag"><i class="fas fa-fire"></i> 燃气控制</span>
+                                <span class="device-tag"><i class="fas fa-bell"></i> 紧急通知</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 场景卡片8：起床模式 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="scene-card animate-in">
+                        <div class="scene-image">
+                            <div class="scene-overlay">
+                                <div class="scene-icon">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                            </div>
+                            <img src="./image/scene-wakeup.jpg" alt="起床模式" class="img-fluid">
+                        </div>
+                        <div class="scene-content p-4">
+                            <h4>起床模式</h4>
+                            <p>自动打开窗帘，渐亮的柔和灯光，播放晨间音乐，打开咖啡机预热，显示天气和日程信息</p>
+                            <div class="scene-devices mt-3">
+                                <span class="device-tag"><i class="fas fa-window-maximize"></i> 窗帘</span>
+                                <span class="device-tag"><i class="fas fa-music"></i> 音乐</span>
+                                <span class="device-tag"><i class="fas fa-coffee"></i> 咖啡机</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 场景控制按钮 -->
+            <div class="text-center mt-5">
+                <a href="#contact" class="btn btn-primary btn-lg">
+                    定制专属场景 <i class="fas fa-magic ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 房型选择模块 -->
+    <section id="house-types" class="section bg-white">
         <div class="container">
             <div class="section-header text-center mb-5">
-                <h6 class="text-primary fw-bold text-uppercase mb-2">我们的产品</h6>
-                <h2 class="display-5 fw-bold mb-3">智能科技解决方案</h2>
+                <h6 class="text-primary fw-bold text-uppercase mb-2">智能家居解决方案</h6>
+                <h2 class="display-5 fw-bold mb-3">根据房型选择方案</h2>
+                <div class="section-divider mx-auto"></div>
+                <p class="lead text-muted">我们为不同户型提供定制化的智能家居解决方案，满足您的个性化需求</p>
+            </div>
+            
+            <!-- 房型选项卡 -->
+            <div class="house-type-tabs">
+                <ul class="nav nav-pills mb-4" id="houseTypeTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="apartment-tab" data-bs-toggle="pill" data-bs-target="#apartment-content" type="button" role="tab" aria-controls="apartment-content" aria-selected="true">
+                            <i class="fas fa-building me-2"></i>公寓 60-90㎡
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="flat-tab" data-bs-toggle="pill" data-bs-target="#flat-content" type="button" role="tab" aria-controls="flat-content" aria-selected="false">
+                            <i class="fas fa-home me-2"></i>平层 90-180㎡
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="villa-tab" data-bs-toggle="pill" data-bs-target="#villa-content" type="button" role="tab" aria-controls="villa-content" aria-selected="false">
+                            <i class="fas fa-landmark me-2"></i>别墅 180㎡+
+                        </button>
+                    </li>
+                </ul>
+                
+                <!-- 房型内容面板 -->
+                <div class="tab-content" id="houseTypeContent">
+                    <!-- 公寓内容 -->
+                    <div class="tab-pane fade show active" id="apartment-content" role="tabpanel" aria-labelledby="apartment-tab">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6">
+                                <div class="house-type-image animate-on-scroll">
+                                    <img src="./image/apartment.jpg" alt="公寓智能家居" class="img-fluid rounded-4 shadow">
+                                    <div class="house-type-badge">
+                                        <span>60-90㎡</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="house-type-devices">
+                                    <h4>公寓智能设备推荐</h4>
+                                    <div class="device-list">
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-lightbulb"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能照明</h5>
+                                                <p>自动调节亮度，定时开关，语音控制</p>
+                                                <div class="device-status">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>亮度: 75%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-temperature-low"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能空调</h5>
+                                                <p>温度自动调节，远程控制，定时开关</p>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-shield-alt"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能门锁</h5>
+                                                <p>指纹识别，远程开锁，访客密码</p>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-video"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能监控</h5>
+                                                <p>实时监控，移动侦测，远程查看</p>
+                                                <div class="device-status">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>状态: 在线</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-music"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能音响</h5>
+                                                <p>语音控制，多房间播放，智能助手</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-4">
+                                            <a href="#contact" class="btn btn-outline-primary">
+                                                查看更多设备 <i class="fas fa-arrow-right ms-2"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 平层内容 -->
+                    <div class="tab-pane fade" id="flat-content" role="tabpanel" aria-labelledby="flat-tab">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6">
+                                <div class="house-type-image animate-on-scroll">
+                                    <img src="./image/flat.jpg" alt="平层智能家居" class="img-fluid rounded-4 shadow">
+                                    <div class="house-type-badge">
+                                        <span>90-180㎡</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="house-type-devices">
+                                    <h4>平层智能设备推荐</h4>
+                                    <div class="device-list">
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-lightbulb"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>全屋智能照明</h5>
+                                                <p>场景模式，自动调节，分区控制</p>
+                                                <div class="device-status">
+                                                    <div class="progress">
+                                                        <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>亮度: 60%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-wind"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>新风系统</h5>
+                                                <p>空气质量监测，自动净化，温湿度控制</p>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-couch"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能家具</h5>
+                                                <p>自动调节，姿态记忆，健康监测</p>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-shower"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能卫浴</h5>
+                                                <p>温度控制，自动清洁，语音控制</p>
+                                                <div class="device-status">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>水温: 40°C</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-tv"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能影音</h5>
+                                                <p>多房间控制，场景联动，语音控制</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-4">
+                                            <a href="#contact" class="btn btn-outline-primary">
+                                                查看更多设备 <i class="fas fa-arrow-right ms-2"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 别墅内容 -->
+                    <div class="tab-pane fade" id="villa-content" role="tabpanel" aria-labelledby="villa-tab">
+                        <div class="row align-items-center g-4">
+                            <div class="col-lg-6">
+                                <div class="house-type-image animate-on-scroll">
+                                    <img src="./image/villa.jpg" alt="别墅智能家居" class="img-fluid rounded-4 shadow">
+                                    <div class="house-type-badge">
+                                        <span>180㎡+</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="house-type-devices">
+                                    <h4>别墅智能设备推荐</h4>
+                                    <div class="device-list">
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-home"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>全宅智能控制</h5>
+                                                <p>中央控制系统，多区域管理，场景联动</p>
+                                                <div class="device-status">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-success" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>系统状态: 良好</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-swimming-pool"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>泳池控制</h5>
+                                                <p>温度控制，水质监测，自动清洁</p>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-car"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>智能车库</h5>
+                                                <p>自动开关，安全监控，充电管理</p>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-tree"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>花园灌溉</h5>
+                                                <p>自动浇水，土壤监测，天气适应</p>
+                                                <div class="device-status">
+                                                    <div class="progress">
+                                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                                    </div>
+                                                    <span>土壤湿度: 30%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="device-item">
+                                            <div class="device-icon">
+                                                <i class="fas fa-wine-glass-alt"></i>
+                                            </div>
+                                            <div class="device-info">
+                                                <h5>酒窖控制</h5>
+                                                <p>温湿度控制，库存管理，智能推荐</p>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-4">
+                                            <a href="#contact" class="btn btn-outline-primary">
+                                                查看更多设备 <i class="fas fa-arrow-right ms-2"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 产品优势 -->
+    <section id="advantages" class="section bg-light fullpage-section orvibo-style-section">
+        <div class="container">
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
+                <h6 class="text-primary fw-bold text-uppercase mb-2">为什么选择我们</h6>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">产品核心优势</h2>
                 <div class="section-divider mx-auto"></div>
             </div>
             <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card product-card h-100 animate-on-scroll">
-                        <div class="card-image-wrapper">
-                            <div class="icon-overlay">
-                                <i class="fas fa-robot"></i>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="AI助手">
+                <div class="col-md-3">
+                    <div class="text-center animate-in">
+                        <div class="advantage-icon mb-4">
+                            <i class="fas fa-microchip fa-3x text-primary"></i>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">
-                                <i class="fas fa-robot text-primary me-2"></i>离家安防模式
-
-                            </h5>
-                            <p class="card-text flex-grow-1">24小时在线的安防系统，为您提供专业的智能安防。采用先进的自动识别技术，让安全常守护。</p>
-                            <div class="card-features mb-3">
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>24/7全天候守护</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>自动识别技术</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>智能安防系统</span>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary btn-hover-effect">
-                                了解详情 <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
+                        <h4 class="mb-3">智能芯片</h4>
+                        <p>自主研发智能芯片，性能强大，稳定可靠</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card product-card h-100 animate-on-scroll">
-                        <div class="card-image-wrapper">
-                            <div class="icon-overlay">
-                                <i class="fas fa-chart-line"></i>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="数据分析">
+                <div class="col-md-3">
+                    <div class="text-center animate-in">
+                        <div class="advantage-icon mb-4">
+                            <i class="fas fa-shield-alt fa-3x text-primary"></i>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">
-                                <i class="fas fa-chart-line text-primary me-2"></i>回家模式
-
-                            </h5>
-                            <p class="card-text flex-grow-1">通过智能指纹锁解锁打开家门，玄关、过道、客厅等灯光亮起休闲模式，热水器、空气净化器、空调等已由定时功能提前启动，为您解除一天的疲惫。
-                            </p>
-                            <div class="card-features mb-3">
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>休闲模式</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span></span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>解除疲惫</span>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary btn-hover-effect">
-                                了解详情 <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
-                        </div>
+                        <h4 class="mb-3">安全可靠</h4>
+                        <p>多重安全防护，数据加密传输，保护隐私</p>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="card product-card h-100 animate-on-scroll">
-                        <div class="card-image-wrapper">
-                            <div class="icon-overlay">
-                                <i class="fas fa-cogs"></i>
-                            </div>
-                            <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" class="card-img-top" alt="自动化">
+                <div class="col-md-3">
+                    <div class="text-center animate-in">
+                        <div class="advantage-icon mb-4">
+                            <i class="fas fa-cloud fa-3x text-primary"></i>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">
-                                <i class="fas fa-cogs text-primary me-2"></i>智能自动化
-                            </h5>
-                            <p class="card-text flex-grow-1">自动化解决方案，提升您的工作效率。通过智能流程自动化，减少重复性工作。</p>
-                            <div class="card-features mb-3">
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>流程自动化</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>智能调度</span>
-                                </div>
-                                <div class="feature-item">
-                                    <i class="fas fa-check-circle text-success"></i>
-                                    <span>错误监控</span>
-                                </div>
-                            </div>
-                            <a href="#" class="btn btn-primary btn-hover-effect">
-                                了解详情 <i class="fas fa-arrow-right ms-2"></i>
-                            </a>
+                        <h4 class="mb-3">云端服务</h4>
+                        <p>专业云平台支持，数据实时同步，永不丢失</p>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="text-center animate-in">
+                        <div class="advantage-icon mb-4">
+                            <i class="fas fa-tools fa-3x text-primary"></i>
                         </div>
+                        <h4 class="mb-3">专业服务</h4>
+                        <p>7*24小时技术支持，专业团队保障</p>
                     </div>
                 </div>
             </div>
@@ -231,15 +1160,15 @@
     </section>
 
     <!-- 关于我们 -->
-    <section id="about" class="section">
+    <section id="about" class="section bg-light fullpage-section orvibo-style-section">
         <div class="container">
-            <div class="section-header text-center mb-5">
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
                 <h6 class="text-primary fw-bold text-uppercase mb-2">关于我们</h6>
-                <h2 class="display-5 fw-bold mb-3">用科技改变未来</h2>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">用科技改变未来</h2>
                 <div class="section-divider mx-auto"></div>
             </div>
             <div class="row align-items-center g-5">
-                <div class="col-lg-6 animate-on-scroll">
+                <div class="col-lg-6 animate-in">
                     <div class="about-content">
                         <div class="about-stats mb-4">
                             <div class="row g-4">
@@ -270,30 +1199,10 @@
                             </div>
                         </div>
                         <p class="lead mb-4">我们是一家专注于智能家居的创新企业，致力于为客户提供最优质的智能化解决方案。</p>
-                        <div class="about-features">
-                            <div class="feature-row">
-                                <div class="feature-icon">
-                                    <i class="fas fa-brain text-primary"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h5>技术创新</h5>
-                                    <p>持续投入研发，保持技术领先优势</p>
-                                </div>
-                            </div>
-                            <div class="feature-row">
-                                <div class="feature-icon">
-                                    <i class="fas fa-shield-alt text-primary"></i>
-                                </div>
-                                <div class="feature-content">
-                                    <h5>安全可靠</h5>
-                                    <p>严格的安全标准，保护客户数据</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="about-image-wrapper animate-on-scroll">
+                    <div class="about-image-wrapper animate-in mb-4">
                         <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
                              class="img-fluid rounded-4" alt="关于我们">
                         <div class="experience-badge">
@@ -301,103 +1210,58 @@
                             <span class="text">年行业经验</span>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- AI对话入口按钮 -->
-    <div class="ai-chat-trigger">
-        <button class="chat-button" id="openAIChat">
-            <div class="button-content">
-                <div class="robot-avatar">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <span class="pulse"></span>
-            </div>
-        </button>
-    </div>
-
-    <!-- AI对话框 Modal -->
-    <div class="ai-chat-modal" id="aiChatModal">
-        <div class="modal-content">
-            <div class="chat-header">
-                <div class="d-flex align-items-center">
-                    <div class="chat-avatar">
-                        <i class="fas fa-robot"></i>
-                        <span class="status-dot"></span>
-                    </div>
-                    <div class="chat-info ms-3">
-                        <h5 class="mb-0">AI智能助手</h5>
-                        <small class="text-success">
-                            <i class="fas fa-circle me-1"></i>在线服务中
-                        </small>
-                    </div>
-                </div>
-                <div class="header-actions">
-                    <button class="minimize-btn" id="minimizeChat">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button class="close-btn" id="closeChat">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="chat-body">
-                <div class="tech-background">
-                    <div class="circuit-lines"></div>
-                </div>
-                <div class="messages" id="chatMessages">
-                    <div class="message ai-message">
-                        <div class="message-content">
-                            <div class="typing-indicator">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <div class="feature-row text-center animate-in">
+                                <div class="feature-icon">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>技术创新</h5>
+                                    <p>持续投入研发，保持技术领先优势</p>
+                                </div>
                             </div>
-                            <p>您好！我是 AI 助手，很高兴为您服务。</p>
-                            <div class="message-footer">
-                                <small class="message-time">刚刚</small>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-row text-center animate-in">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>安全可靠</h5>
+                                    <p>严格的安全标准，保护客户数据</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="feature-row text-center animate-in">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="feature-content">
+                                    <h5>专业团队</h5>
+                                    <p>资深工程师团队，提供专业技术支持</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="chat-footer">
-                <div class="quick-actions mb-2">
-                    <button class="action-btn" data-question="产品介绍">
-                        <i class="fas fa-cube"></i> 产品介绍
-                    </button>
-                    <button class="action-btn" data-question="技术支持">
-                        <i class="fas fa-wrench"></i> 技术支持
-                    </button>
-                    <button class="action-btn" data-question="价格咨询">
-                        <i class="fas fa-tag"></i> 价格咨询
-                    </button>
-                </div>
-                <div class="input-group">
-                    <input type="text" class="form-control" id="messageInput" 
-                           placeholder="输入您的问题...">
-                    <button class="send-btn" onclick="sendMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-            </div>
         </div>
-    </div>
+    </section>
 
     <!-- 联系方式 -->
-    <section id="contact" class="section contact-section">
+    <section id="contact" class="section contact-section fullpage-section orvibo-style-section">
         <div class="container">
-            <div class="section-header text-center mb-5">
+            <div class="section-header text-center mb-5 orvibo-section-header animate-in">
                 <h6 class="text-primary fw-bold text-uppercase mb-2">联系我们</h6>
-                <h2 class="display-5 fw-bold mb-3">让我们开始合作</h2>
+                <h2 class="display-5 fw-bold mb-3 orvibo-section-title">让我们开始合作</h2>
                 <div class="section-divider mx-auto"></div>
-                <p class="lead text-muted">如果您有任何问题或建议，请随时与我们联系</p>
+                <p class="lead text-muted orvibo-section-subtitle animate-in">如果您有任何问题或建议，请随时与我们联系</p>
             </div>
             <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="contact-info">
+                <div class="col-lg-5">
+                    <div class="contact-info animate-in">
                         <div class="info-card">
                             <div class="info-icon">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -422,30 +1286,47 @@
                             </div>
                             <div class="info-content">
                                 <h5>电子邮箱</h5>
-                                <p>contact@aitech.com</p>
+                                <p>SkongJiaHong@outlook.com</p>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-1 d-flex align-items-center justify-content-center">
+                    <div class="divider-vertical"></div>
+                </div>
                 <div class="col-lg-6">
-                    <div class="contact-form-wrapper">
-                        <form class="contact-form">
-                            <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="nameInput" name="name" placeholder="您的姓名" required>
-                                <label for="nameInput">您的姓名</label>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="contact-form-wrapper animate-in">
+                                <form class="contact-form">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="nameInput" name="name" placeholder="您的姓名" required>
+                                        <label for="nameInput">您的姓名</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" id="emailInput" name="email" placeholder="电子邮箱" required>
+                                        <label for="emailInput">电子邮箱</label>
+                                    </div>
+                                    <div class="form-floating mb-3">
+                                        <textarea class="form-control" id="messageInput" name="message" style="height: 150px" placeholder="请输入您的留言" required></textarea>
+                                        <label for="messageInput">请输入您的留言</label>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-lg w-100 btn-hover-effect">
+                                        发送留言 <i class="fas fa-paper-plane ms-2"></i>
+                                    </button>
+                                </form>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="电子邮箱" required>
-                                <label for="emailInput">电子邮箱</label>
+                        </div>
+                        <!-- <div class="col-lg-12 mt-4 d-flex justify-content-center">
+                            <div class="wechat-display-card">
+                                <div class="qr-code-container">
+                                    <img src="./image/wechat-qr.jpg" alt="微信二维码" class="img-fluid wechat-qr">
+                                </div>
+                                <div class="wechat-info text-center mt-2">
+                                    <p class="mb-0"><i class="fab fa-weixin text-success me-2"></i>扫码添加微信</p>
+                                </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="messageInput" name="message" style="height: 150px" placeholder="请输入您的留言" required></textarea>
-                                <label for="messageInput">请输入您的留言</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-lg w-100 btn-hover-effect">
-                                发送留言 <i class="fas fa-paper-plane ms-2"></i>
-                            </button>
-                        </form>
+                        </div> -->
                     </div>
                 </div>
             </div>
@@ -454,17 +1335,16 @@
     </section>
 
     <!-- 页脚 -->
-    <footer class="footer">
-        <div class="footer-particles" id="footer-particles"></div>
-        <div class="footer-content">
-            <div class="container">
+    <footer class="footer py-5 mt-5">
+        <div class="container">
+            <div class="footer-content">
                 <div class="row g-4">
                     <div class="col-lg-4">
                         <div class="footer-brand">
-                            <h3><i class="fas fa-robot me-2"></i> 深空嘉鸿</h3>
+                            <h3><img src="./image/logo.jpg" alt="深空嘉鸿" class="me-2" style="width: 100px; height: 80px;"> 深空嘉鸿</h3>
                             <p class="mt-3">引领智能化未来，为企业提供全方位的智能家居解决方案。</p>
                             <div class="social-links mt-4">
-                                <a href="#" class="social-link"><i class="fab fa-weixin"></i></a>
+                                <a href="#contact" class="social-link"><i class="fab fa-weixin"></i></a>
                                 <a href="#" class="social-link"><i class="fab fa-weibo"></i></a>
                                 <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                             </div>
@@ -482,7 +1362,6 @@
                     <div class="col-lg-3">
                         <h5 class="footer-title">产品服务</h5>
                         <ul class="footer-links">
-                            <li><a href="#">AI智能助手</a></li>
                             <li><a href="#">数据分析</a></li>
                             <li><a href="#">自动化方案</a></li>
                             <li><a href="#">技术支持</a></li>
@@ -497,7 +1376,7 @@
                             </li>
                             <li>
                                 <i class="fas fa-envelope"></i>
-                                <span>contact@aitech.com</span>
+                                <span>SkongJiaHong@outlook.com</span>
                             </li>
                             <li>
                                 <i class="fas fa-map-marker-alt"></i>
@@ -529,5 +1408,93 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
+    <script src="fullpage-scroll.js"></script>
+
+    <!-- 视频播放检测脚本 -->
+    <script>
+        // 当DOM加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取视频和后备图片元素
+            const video = document.getElementById('banner-video');
+            const fallback = document.getElementById('banner-fallback');
+            
+            if (!video || !fallback) return; // 如果元素不存在，直接返回
+            
+            // 检查视频是否可以播放
+            let isVideoPlayable = false;
+            
+            // 视频加载成功并开始播放
+            video.addEventListener('playing', function() {
+                isVideoPlayable = true;
+                fallback.style.display = 'none'; // 确保后备图片隐藏
+                console.log('视频成功播放，隐藏后备图片');
+            });
+            
+            // 视频遇到错误
+            video.addEventListener('error', function() {
+                showFallbackImage();
+                console.log('视频播放错误，显示后备图片');
+            });
+            
+            // 视频格式不支持等情况
+            video.addEventListener('stalled', function() {
+                if (!isVideoPlayable) {
+                    showFallbackImage();
+                    console.log('视频加载停滞，显示后备图片');
+                }
+            });
+            
+            // 设置超时检测，如果5秒内视频没有播放，显示后备图片
+            setTimeout(function() {
+                if (!isVideoPlayable && video.readyState < 3) {
+                    showFallbackImage();
+                    console.log('视频加载超时，显示后备图片');
+                }
+            }, 5000);
+            
+            // 显示后备图片的函数
+            function showFallbackImage() {
+                fallback.style.display = 'block';
+                video.style.display = 'none'; // 隐藏视频元素
+            }
+        });
+    </script>
+
+    <!-- 微信二维码弹窗 -->
+    <div class="modal fade" id="wechatModal" tabindex="-1" aria-labelledby="wechatModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-light">
+                    <h5 class="modal-title" id="wechatModalLabel">
+                        <i class="fab fa-weixin text-success me-2"></i>联系我们
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="关闭"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 border-end">
+                            <div class="text-center p-3">
+                                <img src="./image/wechat-qr.jpg" alt="微信二维码" class="img-fluid wechat-qr mb-3" style="max-width: 200px;">
+                                <p class="mb-0 fw-bold">扫码添加微信</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-center p-3">
+                                <div class="contact-icon mb-3">
+                                    <i class="fas fa-phone-alt fa-3x text-primary"></i>
+                                </div>
+                                <h5>客服电话</h5>
+                                <p class="fs-5 fw-bold">130-6000-4206</p>
+                                <p class="text-muted small">周一至周五 9:00-18:00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

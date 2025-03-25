@@ -1,134 +1,90 @@
-// 页面加载完成后执行
+/**
+ * 页面加载完成后的初始化函数
+ * 当DOM内容加载完成后执行，初始化网站的各项功能
+ */
 document.addEventListener('DOMContentLoaded', function() {
-    // 初始化滚动动画
+    // 初始化视频播放检测功能 - 确保只在视频无法播放时显示后备图片
+    initVideoBannerFallback();
+    // 初始化滚动动画效果 - 实现页面元素随滚动出现的动画
     initScrollAnimation();
-    // 初始化导航栏效果
+    // 初始化导航栏交互效果 - 实现导航栏随滚动变化和平滑滚动
     initNavbar();
-    // 初始化AI对话
-    initAIChat();
-    // 初始化表单验证
-    initContactForm();
-    // 初始化particles.js
-    if (document.getElementById('particles-js')) {
-        particlesJS('particles-js', {
-            particles: {
-                number: {
-                    value: 80,
-                    density: {
-                        enable: true,
-                        value_area: 800
-                    }
-                },
-                color: {
-                    value: '#008080'
-                },
-                shape: {
-                    type: 'circle'
-                },
-                opacity: {
-                    value: 0.5,
-                    random: false
-                },
-                size: {
-                    value: 3,
-                    random: true
-                },
-                line_linked: {
-                    enable: true,
-                    distance: 150,
-                    color: '#008080',
-                    opacity: 0.4,
-                    width: 1
-                },
-                move: {
-                    enable: true,
-                    speed: 2,
-                    direction: 'none',
-                    random: false,
-                    straight: false,
-                    out_mode: 'out',
-                    bounce: false
-                }
-            },
-            interactivity: {
-                detect_on: 'canvas',
-                events: {
-                    onhover: {
-                        enable: true,
-                        mode: 'grab'
-                    },
-                    onclick: {
-                        enable: true,
-                        mode: 'push'
-                    },
-                    resize: true
-                }
-            },
-            retina_detect: true
-        });
-    }
-    // 初始化页脚粒子效果
-    particlesJS('footer-particles', {
-        particles: {
-            number: {
-                value: 40,
-                density: {
-                    enable: true,
-                    value_area: 800
-                }
-            },
-            color: {
-                value: '#ffffff'
-            },
-            opacity: {
-                value: 0.2,
-                random: true
-            },
-            size: {
-                value: 3,
-                random: true
-            },
-            line_linked: {
-                enable: true,
-                distance: 150,
-                color: '#ffffff',
-                opacity: 0.1,
-                width: 1
-            },
-            move: {
-                enable: true,
-                speed: 2,
-                direction: 'none',
-                random: true,
-                straight: false,
-                out_mode: 'out',
-                bounce: false
-            }
-        },
-        interactivity: {
-            detect_on: 'canvas',
-            events: {
-                onhover: {
-                    enable: true,
-                    mode: 'grab'
-                },
-                resize: true
-            }
-        },
-        retina_detect: true
-    });
+    // 初始化房型选择模块 - 实现不同房型的选择和展示
+    initHouseTypeTabs();
+    // 初始化微信二维码弹窗功能
+    initWechatModal();
+    // 初始化全屏滚动效果
+    initFullPageScroll();
+    // 初始化产品中心下拉菜单
+    initProductCategorySwitch();
+    // 初始化移动端导航栏
+    initMobileNavigation();
 });
 
-// 页面加载完成后移除预加载动画
+/**
+ * 视频Banner后备图片处理
+ * 检测视频是否能够播放，只有在视频无法播放时才显示后备图片
+ */
+function initVideoBannerFallback() {
+    const video = document.getElementById('banner-video');
+    const fallback = document.getElementById('banner-fallback');
+    
+    if (!video || !fallback) return; // 如果元素不存在，直接返回
+    
+    // 检查视频是否可以播放
+    let isVideoPlayable = false;
+    
+    // 视频加载成功并开始播放
+    video.addEventListener('playing', function() {
+        isVideoPlayable = true;
+        fallback.style.display = 'none'; // 确保后备图片隐藏
+        console.log('视频成功播放，隐藏后备图片');
+    });
+    
+    // 视频遇到错误
+    video.addEventListener('error', function() {
+        showFallbackImage();
+        console.log('视频播放错误，显示后备图片');
+    });
+    
+    // 视频格式不支持等情况
+    video.addEventListener('stalled', function() {
+        if (!isVideoPlayable) {
+            showFallbackImage();
+            console.log('视频加载停滞，显示后备图片');
+        }
+    });
+    
+    // 设置超时检测，如果5秒内视频没有播放，显示后备图片
+    setTimeout(function() {
+        if (!isVideoPlayable && video.readyState < 3) { // readyState < 3 表示视频还没有足够数据开始播放
+            showFallbackImage();
+            console.log('视频加载超时，显示后备图片');
+        }
+    }, 5000);
+    
+    // 显示后备图片的函数
+    function showFallbackImage() {
+        fallback.style.display = 'block';
+        video.style.display = 'none'; // 隐藏视频元素
+    }
+}
+
+/**
+ * 页面资源加载完成后移除预加载动画
+ * 当所有资源（图片、样式等）加载完成后执行，移除加载动画
+ */
 window.addEventListener('load', function() {
     const preloader = document.querySelector('.preloader');
-    preloader.classList.add('fade-out');
+    preloader.classList.add('fade-out'); // 添加淡出效果
     setTimeout(() => {
-        preloader.style.display = 'none';
+        preloader.style.display = 'none'; // 500ms后完全隐藏预加载动画
     }, 500);
 });
 
-// 滚动动画
+/**
+ * 初始化滚动动画效果
+ */
 function initScrollAnimation() {
     const elements = document.querySelectorAll('.animate-on-scroll');
     
@@ -148,7 +104,9 @@ function initScrollAnimation() {
     });
 }
 
-// 导航栏效果
+/**
+ * 初始化导航栏效果
+ */
 function initNavbar() {
     const navbar = document.querySelector('.navbar');
     
@@ -177,205 +135,321 @@ function initNavbar() {
     });
 }
 
-// AI对话框功能
-document.addEventListener('DOMContentLoaded', function() {
-    const chatButton = document.getElementById('openAIChat');
-    const chatModal = document.getElementById('aiChatModal');
-    const closeButton = document.getElementById('closeChat');
-    const minimizeButton = document.getElementById('minimizeChat');
-    const messageInput = document.getElementById('messageInput');
-    const chatMessages = document.getElementById('chatMessages');
-    const quickActions = document.querySelectorAll('.action-btn');
+/**
+ * 初始化particles.js效果
+ * 此函数已不再使用，保留为空函数以避免可能的引用错误
+ */
+function initParticles() {
+    // 此函数已被禁用，网站不再使用粒子动画效果
+    console.log('粒子动画功能已被禁用');
+}
 
-    // 打开对话框
-    chatButton.addEventListener('click', () => {
-        chatModal.classList.add('active');
-    });
-
-    // 关闭对话框
-    closeButton.addEventListener('click', () => {
-        chatModal.classList.remove('active');
-    });
-
-    // 最小化对话框
-    minimizeButton.addEventListener('click', () => {
-        chatModal.classList.remove('active');
-    });
-
-    // 发送消息到AI
-    async function sendToAI(message) {
-        try {
-            // 显示加载动画
-            const typingDiv = document.createElement('div');
-            typingDiv.className = 'message ai-message';
-            typingDiv.innerHTML = `
-                <div class="message-content">
-                    <div class="typing-indicator">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            `;
-            chatMessages.appendChild(typingDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-
-            const response = await fetch('http://localhost:3000/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message })
-            });
-
-            if (!response.ok) {
-                throw new Error('API请求失败');
-            }
-
-            const data = await response.json();
-            
-            // 移除加载动画
-            typingDiv.remove();
-
-            // 显示AI回复
-            if (data.choices && data.choices[0].message) {
-                appendMessage(data.choices[0].message.content, 'ai');
-            } else {
-                throw new Error('无效的响应数据');
-            }
-
-        } catch (error) {
-            console.error('发送消息错误:', error);
-            appendMessage('抱歉，服务出现了问题，请稍后再试。', 'ai');
-        }
-    }
-
-    // 发送消息
-    async function sendMessage() {
-        const message = messageInput.value.trim();
-        if (!message) return;
-
-        // 显示用户消息
-        appendMessage(message, 'user');
-        messageInput.value = '';
-
-        // 发送到AI
-        await sendToAI(message);
-    }
-
-    // 添加消息到对话框
-    function appendMessage(content, type) {
-        const messageDiv = document.createElement('div');
-        messageDiv.className = `message ${type}-message`;
-        
-        const time = new Date().toLocaleTimeString('zh-CN', {
-            hour: '2-digit',
-            minute: '2-digit'
-        });
-
-        messageDiv.innerHTML = `
-            <div class="message-content">
-                <p>${content}</p>
-                <div class="message-footer">
-                    <small class="message-time">${time}</small>
-                </div>
-            </div>
-        `;
-
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    // 快速操作按钮
-    quickActions.forEach(button => {
-        button.addEventListener('click', async () => {
-            const question = button.dataset.question;
-            appendMessage(question, 'user');
-            await sendToAI(question);
-        });
-    });
-
-    // 回车发送消息
-    messageInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-
-    // 点击发送按钮
-    document.querySelector('.send-btn').addEventListener('click', sendMessage);
-});
-
-// 表单验证和提交
-function initContactForm() {
-    const form = document.querySelector('.contact-form');
+/**
+ * 初始化房型选择模块
+ */
+function initHouseTypeTabs() {
+    // 获取所有设备项
+    const deviceItems = document.querySelectorAll('.device-item');
     
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
+    // 为设备项添加悬停效果
+    deviceItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-5px)';
+            this.style.boxShadow = '0 10px 20px rgba(0, 128, 255, 0.1)';
+            
+            // 图标旋转效果
+            const icon = this.querySelector('.device-icon');
+            if (icon) {
+                icon.style.transform = 'rotate(15deg)';
+            }
+        });
         
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData.entries());
-        
-        // 表单验证
-        if (!validateForm(data)) return;
-
-        try {
-            // 这里替换为实际的API调用
-            await mockSubmitForm(data);
-            showMessage('success', '消息已成功发送！我们会尽快回复您。');
-            form.reset();
-        } catch (error) {
-            showMessage('error', '发送失败，请稍后重试。');
-        }
+        item.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+            this.style.boxShadow = '';
+            
+            // 恢复图标
+            const icon = this.querySelector('.device-icon');
+            if (icon) {
+                icon.style.transform = '';
+            }
+        });
     });
-
-    function validateForm(data) {
-        if (!data.name || data.name.length < 2) {
-            showMessage('error', '请输入有效的姓名');
-            return false;
-        }
-        if (!data.email || !isValidEmail(data.email)) {
-            showMessage('error', '请输入有效的邮箱地址');
-            return false;
-        }
-        if (!data.message || data.message.length < 10) {
-            showMessage('error', '留言内容至少需要10个字符');
-            return false;
-        }
-        return true;
-    }
-
-    function isValidEmail(email) {
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // 模拟表单提交
-    async function mockSubmitForm(data) {
-        await new Promise(resolve => setTimeout(resolve, 1000));
-        console.log('Form submitted:', data);
-        return true;
-    }
-
-    function showMessage(type, message) {
-        const alertDiv = document.createElement('div');
-        alertDiv.className = `alert alert-${type === 'success' ? 'success' : 'danger'} mt-3`;
-        alertDiv.textContent = message;
-        form.appendChild(alertDiv);
-        setTimeout(() => alertDiv.remove(), 3000);
-    }
-}
-
-// 滚动动画
-function handleScrollAnimation() {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('visible');
-        }
+    
+    // 初始化Bootstrap选项卡
+    const tabEls = document.querySelectorAll('#houseTypeTabs button[data-bs-toggle="pill"]');
+    tabEls.forEach(tabEl => {
+        tabEl.addEventListener('shown.bs.tab', event => {
+            // 当选项卡显示时，触发动画
+            const targetId = event.target.getAttribute('data-bs-target');
+            const targetPane = document.querySelector(targetId);
+            if (targetPane) {
+                const image = targetPane.querySelector('.house-type-image');
+                if (image) {
+                    // 重置动画
+                    image.classList.remove('slide-up');
+                    void image.offsetWidth; // 触发重绘
+                    image.classList.add('slide-up');
+                }
+            }
+        });
     });
 }
 
-window.addEventListener('scroll', handleScrollAnimation);
-handleScrollAnimation(); // 初始检查 
+/**
+ * 初始化微信二维码弹窗功能
+ */
+function initWechatModal() {
+    // 获取所有微信图标和带有wechat-link类的元素
+    const wechatIcons = document.querySelectorAll('.fa-weixin');
+    const wechatLinks = document.querySelectorAll('.wechat-link');
+    
+    // 处理点击事件的函数
+    const handleWechatClick = function(e) {
+        e.preventDefault(); // 阻止默认行为
+        
+        // 使用Bootstrap的Modal API打开弹窗
+        const wechatModal = new bootstrap.Modal(document.getElementById('wechatModal'));
+        wechatModal.show();
+        
+        // 添加动画效果
+        const qrCode = document.querySelector('.wechat-qr');
+        if (qrCode) {
+            qrCode.classList.add('animate__animated', 'animate__fadeIn');
+            setTimeout(() => {
+                qrCode.classList.remove('animate__animated', 'animate__fadeIn');
+            }, 1000);
+        }
+        
+        // 为电话图标添加动画效果
+        const phoneIcon = document.querySelector('.contact-icon .fa-phone-alt');
+        if (phoneIcon) {
+            phoneIcon.classList.add('animate__animated', 'animate__heartBeat');
+            setTimeout(() => {
+                phoneIcon.classList.remove('animate__animated', 'animate__heartBeat');
+            }, 1000);
+        }
+    };
+    
+    // 为所有微信图标添加点击事件（包括文本内的图标）
+    wechatIcons.forEach(icon => {
+        // 如果图标是链接的一部分，则为父元素添加点击事件
+        if (icon.parentElement.tagName === 'A' || icon.parentElement.tagName === 'P') {
+            icon.parentElement.addEventListener('click', handleWechatClick);
+            icon.parentElement.style.cursor = 'pointer'; // 添加手型光标样式
+            
+            // 添加鼠标悬停效果
+            icon.parentElement.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+            });
+            
+            icon.parentElement.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        } else {
+            // 直接为图标添加点击事件
+            icon.addEventListener('click', handleWechatClick);
+            icon.style.cursor = 'pointer'; // 添加手型光标样式
+            
+            // 添加鼠标悬停效果
+            icon.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.1)';
+                this.style.display = 'inline-block';
+            });
+            
+            icon.addEventListener('mouseleave', function() {
+                this.style.transform = '';
+            });
+        }
+    });
+    
+    // 为所有带有wechat-link类的元素添加点击事件
+    wechatLinks.forEach(link => {
+        link.addEventListener('click', handleWechatClick);
+        
+        // 添加鼠标悬停效果
+        link.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+        });
+        
+        link.addEventListener('mouseleave', function() {
+            this.style.transform = '';
+        });
+    });
+}
+
+/**
+ * 初始化全屏滚动效果
+ * 参考欧瑞博网站的滚动设计
+ */
+function initFullPageScroll() {
+    // 获取所有需要滚动显示的区块
+    const sections = document.querySelectorAll('.fullpage-section');
+    
+    // 滚动监听器，添加动画效果
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-active');
+                
+                // 为子元素添加依次进入的动画
+                const animateItems = entry.target.querySelectorAll('.animate-in');
+                animateItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.classList.add('item-visible');
+                    }, 200 * (index + 1));
+                });
+            }
+        });
+    }, observerOptions);
+    
+    // 观察每个区块
+    sections.forEach(section => {
+        sectionObserver.observe(section);
+        
+        // 初始状态，移除活跃类
+        if (!section.classList.contains('active-on-load')) {
+            section.classList.remove('section-active');
+        }
+        
+        // 重置子元素动画状态
+        const animateItems = section.querySelectorAll('.animate-in');
+        animateItems.forEach(item => {
+            item.classList.remove('item-visible');
+        });
+    });
+    
+    // 添加滚动指示器
+    const scrollIndicator = document.createElement('div');
+    scrollIndicator.className = 'scroll-indicator';
+    for (let i = 0; i < sections.length; i++) {
+        const dot = document.createElement('div');
+        dot.className = 'scroll-dot';
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+            sections[i].scrollIntoView({ behavior: 'smooth' });
+        });
+        scrollIndicator.appendChild(dot);
+    }
+    document.body.appendChild(scrollIndicator);
+    
+    // 更新滚动指示器
+    window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+        const dots = document.querySelectorAll('.scroll-dot');
+        
+        sections.forEach((section, index) => {
+            const sectionTop = section.offsetTop - 200;
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[index].classList.add('active');
+            }
+        });
+    });
+}
+
+/**
+ * 处理产品中心下拉菜单中的分类切换
+ * 实现鼠标悬停在分类上时切换显示对应产品内容
+ */
+function initProductCategorySwitch() {
+    const categoryItems = document.querySelectorAll('.product-category-list li');
+    if (!categoryItems.length) return;
+    
+    categoryItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // 移除所有选中状态
+            categoryItems.forEach(cat => cat.classList.remove('active'));
+            // 添加当前项的选中状态
+            this.classList.add('active');
+            
+            // 隐藏所有产品内容
+            document.querySelectorAll('.product-category-content').forEach(content => {
+                content.style.display = 'none';
+            });
+            
+            // 获取当前分类ID并显示对应内容
+            const categoryId = this.getAttribute('data-category');
+            if (categoryId) {
+                const targetContent = document.querySelector(`.product-category-content[data-category="${categoryId}"]`);
+                if (targetContent) {
+                    targetContent.style.display = 'block';
+                    
+                    // 重新触发动画
+                    const items = targetContent.querySelectorAll('.product-item');
+                    items.forEach(item => {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 50);
+                    });
+                }
+            }
+        });
+    });
+}
+
+/**
+ * 处理在移动设备上导航栏的行为
+ * 确保在移动设备上正确显示产品中心下拉菜单
+ */
+function initMobileNavigation() {
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const megaDropdown = document.querySelector('.mega-dropdown');
+    
+    if (!navbarToggler || !megaDropdown) return;
+    
+    // 在移动设备上点击产品中心
+    const dropdownToggle = megaDropdown.querySelector('.dropdown-toggle');
+    if (dropdownToggle) {
+        dropdownToggle.addEventListener('click', function(e) {
+            if (window.innerWidth < 992) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const megaMenu = megaDropdown.querySelector('.mega-dropdown-menu');
+                if (megaMenu) {
+                    if (megaMenu.style.display === 'block') {
+                        megaMenu.style.display = 'none';
+                    } else {
+                        megaMenu.style.display = 'block';
+                    }
+                }
+            }
+        });
+        
+        // 处理产品中心链接的点击事件
+        // 在桌面端，点击"产品中心"文字时跳转到产品页面
+        dropdownToggle.addEventListener('mousedown', function(e) {
+            // 记录点击开始的时间
+            this.clickStartTime = new Date().getTime();
+        });
+        
+        dropdownToggle.addEventListener('mouseup', function(e) {
+            // 如果是快速点击（不是长按），且在桌面端
+            if (new Date().getTime() - this.clickStartTime < 200 && window.innerWidth >= 992) {
+                window.location.href = this.getAttribute('href');
+            }
+        });
+    }
+    
+    // 在窗口大小变化时处理
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 992) {
+            const megaMenu = megaDropdown.querySelector('.mega-dropdown-menu');
+            if (megaMenu) {
+                megaMenu.style.display = '';
+            }
+        }
+    });
+}

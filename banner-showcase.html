@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <!-- 基本的元数据设置 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 页面标题 -->
+    <title>深空嘉鸿 - 智能家居展示</title>
+    
+    <!-- 外部依赖库引入 -->
+    <!-- Bootstrap 5 用于响应式布局和UI组件 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome 用于图标显示 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Animate.css 用于页面动画效果 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+    <!-- 自定义样式表 -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- 页面特定样式 -->
+    <style>
+        /* 展示页面主要内容区域样式 */
+        .showcase-section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+        
+        /* 图片展示区样式 */
+        .showcase-container {
+            max-width: 1200px;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 128, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* 背景图层样式 */
+        .showcase-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('./image/banner.jpg') no-repeat center center;
+            background-size: cover;
+            filter: blur(8px);
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        /* 图片网格布局样式 */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* 图片卡片样式 */
+        .image-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        /* 图片卡片悬停效果 */
+        .image-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 128, 255, 0.2);
+        }
+        
+        /* 图片样式 */
+        .image-card img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+        
+        /* 图片悬停缩放效果 */
+        .image-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* 图片信息覆盖层 */
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+            padding: 1.5rem;
+            transform: translateY(20%);
+            opacity: 0.9;
+            transition: all 0.3s ease;
+        }
+        
+        /* 图片信息覆盖层悬停效果 */
+        .image-card:hover .image-overlay {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* 图片标题样式 */
+        .image-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* 图片描述样式 */
+        .image-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* 返回按钮样式 */
+        .back-button {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <!-- 返回主页按钮 -->
+    <a href="index.html" class="btn btn-primary back-button">
+        <i class="fas fa-arrow-left me-2"></i>返回主页
+    </a>
+    
+    <!-- 主展示区 -->
+    <section class="showcase-section">
+        <!-- 背景图层 -->
+        <div class="showcase-bg"></div>
+        
+        <!-- 内容容器 -->
+        <div class="container showcase-container animate__animated animate__fadeIn">
+            <!-- 页面标题 -->
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary mb-3">智能家居系统展示</h1>
+                <div class="section-divider mx-auto"></div>
+                <p class="lead text-muted">探索我们的智能家居系统，体验科技带来的便捷生活</p>
+            </div>
+            
+            <!-- 主要图片展示 -->
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-6 animate__animated animate__fadeInLeft">
+                    <div class="image-card mb-4">
+                        <img src="./image/control_scene1.jpg" class="img-fluid rounded-4" alt="智能家居系统">
+                        <div class="image-overlay">
+                            <h4 class="image-title">全屋智能控制系统</h4>
+                            <p class="image-description">集成照明、温控、安防等功能于一体的智能控制中心</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 animate__animated animate__fadeInRight">
+                    <h2 class="fw-bold mb-4">智能家居控制中心</h2>
+                    <p>我们的智能家居控制系统采用先进的物联网技术，通过集中控制面板或移动设备APP，实现对家中各种智能设备的便捷操控。</p>
+                    <ul class="list-group list-group-flush mb-4">
+                        <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i>中央控制系统，实现全屋联动</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i>多种控制方式：触控面板、语音、APP</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i>智能场景模式，一键切换生活场景</li>
+                        <li class="list-group-item bg-transparent"><i class="fas fa-check-circle text-primary me-2"></i>远程控制功能，随时随地掌控家居状态</li>
+                    </ul>
+                    <a href="#gallery" class="btn btn-primary">
+                        查看更多展示 <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- 图片画廊 -->
+            <div id="gallery" class="mt-5 pt-3">
+                <h3 class="fw-bold text-center mb-4">系统功能展示</h3>
+                <div class="image-grid">
+                    <!-- 功能展示1 -->
+                    <div class="image-card animate__animated animate__fadeInUp">
+                        <img src="./image/scene-living.jpg" alt="客厅场景" class="img-fluid">
+                        <div class="image-overlay">
+                            <h4 class="image-title">智能客厅</h4>
+                            <p class="image-description">灯光、窗帘、影音设备智能联动，打造理想休闲空间</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能展示2 -->
+                    <div class="image-card animate__animated animate__fadeInUp" style="animation-delay: 0.2s;">
+                        <img src="./image/scene-control.jpg" alt="场景控制" class="img-fluid">
+                        <div class="image-overlay">
+                            <h4 class="image-title">场景控制</h4>
+                            <p class="image-description">预设多种生活场景，一键切换，让生活更加便捷</p>
+                        </div>
+                    </div>
+                    
+                    <!-- 功能展示3 -->
+                    <div class="image-card animate__animated animate__fadeInUp" style="animation-delay: 0.4s;">
+                        <img src="./image/e-control.jpg" alt="智能控制" class="img-fluid">
+                        <div class="image-overlay">
+                            <h4 class="image-title">智能控制</h4>
+                            <p class="image-description">通过手机随时控制家中设备，远程操作更便捷</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 联系我们 -->
+            <div class="text-center mt-5 pt-3">
+                <h3 class="fw-bold mb-4">想了解更多详情？</h3>
+                <p class="lead mb-4">联系我们的专业顾问，量身定制适合您的智能家居解决方案</p>
+                <a href="index.html#contact" class="btn btn-primary btn-lg">
+                    立即咨询 <i class="fas fa-envelope ms-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript 依赖 -->
+    <!-- Bootstrap核心JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery库 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 自定义JavaScript -->
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 添加滚动动画效果
+            const animateElements = document.querySelectorAll('.animate__animated');
+            
+            // 创建交叉观察器
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // 当元素进入视口时添加动画类
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        entry.target.style.animationDelay = entry.target.dataset.delay || '0s';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1 // 当元素有10%进入视口时触发
+            });
+            
+            // 为每个元素添加观察
+            animateElements.forEach(element => {
+                element.style.visibility = 'hidden';
+                observer.observe(element);
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
